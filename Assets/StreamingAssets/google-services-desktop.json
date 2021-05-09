@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "367742254561",
+    "project_id": "fir-demo-71d52",
+    "storage_bucket": "fir-demo-71d52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367742254561:android:3ea3b9239a1656889166a0",
+        "android_client_info": {
+          "package_name": "com.hoon.FirebaseDemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367742254561-lmon7ng49g7ivml5ip73rkti7ceg02q2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyWmUp8srFxUiMSPDX7bvuSejTWVV9_wI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367742254561-lmon7ng49g7ivml5ip73rkti7ceg02q2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
