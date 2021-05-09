@@ -30,6 +30,8 @@ public class testing : MonoBehaviour
         //루트 -> users -> id, id, id에 추가 아이디가 동일하면 값이 갱신됨.
         reference.Child("users").Child("1").SetRawJsonValueAsync(json);
 
+        //일부 객체만 업데이트하기 -> 계층으로 접근해서 업데이트.
+        reference.Child("users").Child("0").Child("userName").SetValueAsync("sang");
     }
 
     string WriteNewUser(string userId, string userName, string userEmail)
