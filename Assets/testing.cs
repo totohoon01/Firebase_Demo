@@ -25,13 +25,28 @@ public class testing : MonoBehaviour
     {
         //데이터 베이스의 주소(루트)
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
-        //json 파일 생성
-        string json = WriteNewUser("0", "hoon2", "hello.com");
-        //루트 -> users -> id, id, id에 추가 아이디가 동일하면 값이 갱신됨.
-        reference.Child("users").Child("1").SetRawJsonValueAsync(json);
+        // //json 파일 생성
+        // string json = WriteNewUser("0", "hoon2", "hello.com");
+        // //루트 -> users -> id, id, id에 추가 아이디가 동일하면 값이 갱신됨.
+        // reference.Child("users").Child("1").SetRawJsonValueAsync(json);
+        // //일부 객체만 업데이트하기 -> 계층으로 접근해서 업데이트.
+        // reference.Child("users").Child("0").Child("userName").SetValueAsync("sang");
+        // //해쉬 키 생성
+        // string key = reference.Child("users").Push().Key;
 
-        //일부 객체만 업데이트하기 -> 계층으로 접근해서 업데이트.
-        reference.Child("users").Child("0").Child("userName").SetValueAsync("sang");
+        //데이터 출력
+        reference.Child("users").GetValueAsync().ContinueWith(task =>
+        {
+            if (task.IsCompleted)
+            {
+                DataSnapshot snapshot = task.Result;
+                foreach (var data in snapshot.Children)
+                {
+                    IDictionary user = (IDictionary)data.Value;
+                    print(user["userName"]);
+                }
+            }
+        });
     }
 
     string WriteNewUser(string userId, string userName, string userEmail)
