@@ -11,12 +11,17 @@ public class testing : MonoBehaviour
     public class User
     {
         public string userName;
-        public string userEmail;
+        public string message;
+        public string createTime;
+        public string userPos;
 
-        public User(string userName, string userEmail)
+
+        public User(string userName, string message, string createTime, string userPos)
         {
             this.userName = userName;
-            this.userEmail = userEmail;
+            this.message = message;
+            this.createTime = createTime;
+            this.userPos = userPos;
         }
     }
 
@@ -26,7 +31,7 @@ public class testing : MonoBehaviour
         //데이터 베이스의 주소(루트)
         DatabaseReference reference = FirebaseDatabase.DefaultInstance.RootReference;
         // //json 파일 생성
-        // string json = WriteNewUser("0", "hoon2", "hello.com");
+        string json = WriteNewUser("hoon2064", "Hello!", "2 days ago", "medici");
         // //루트 -> users -> id, id, id에 추가 아이디가 동일하면 값이 갱신됨.
         // reference.Child("users").Child("1").SetRawJsonValueAsync(json);
         // //일부 객체만 업데이트하기 -> 계층으로 접근해서 업데이트.
@@ -42,16 +47,18 @@ public class testing : MonoBehaviour
                 DataSnapshot snapshot = task.Result;
                 foreach (var data in snapshot.Children)
                 {
+                    print(data.Value);
                     IDictionary user = (IDictionary)data.Value;
-                    print(user["userName"]);
+                    print(user);
+                    // print(user["userName"]);
                 }
             }
         });
     }
 
-    string WriteNewUser(string userId, string userName, string userEmail)
+    string WriteNewUser(string userName, string message, string createTime, string userPos)
     {
-        User user = new User(userName, userEmail);
+        User user = new User(userName, message, createTime, userPos);
         string json = JsonUtility.ToJson(user);
         return json;
     }
